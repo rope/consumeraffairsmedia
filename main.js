@@ -78,3 +78,136 @@ $(function(){
  * http://benalman.com/about/license/
  */
 (function($){var c=document,a=c.write,d=c.writeln,b=$.jqmq({delay:-1,callback:function(e){c.write=c.writeln=function(f){e.elems.append(f)};$.getScript(e.url,function(){e.callback&&e.callback.call(e.elems);b.next()})},complete:function(){c.write=a;c.writeln=d}});$.fn.loadAdScript=function(e,f){b.add({elems:this,url:e,callback:f});return this}})(jQuery);
+
+/* Social Buttons */
+$(function() {
+    $.cookie = function(name, value, options) {
+        if (typeof value != 'undefined') { // name and value given, set cookie
+            options = options || {};
+            if (value === null) {
+                value = '';
+                options.expires = -1;
+            }
+            var expires = '';
+            if (options.expires && (typeof options.expires == 'number' || options.expires.toUTCString)) {
+                var date;
+                if (typeof options.expires == 'number') {
+                    date = new Date();
+                    date.setTime(date.getTime() + (options.expires * 24 * 60 * 60 * 1000));
+                } else {
+                    date = options.expires;
+                }
+                expires = '; expires=' + date.toUTCString(); // use expires attribute, max-age is not supported by IE
+            }
+            // CAUTION: Needed to parenthesize options.path and options.domain
+            // in the following expressions, otherwise they evaluate to undefined
+            // in the packed version for some reason...
+            var path = options.path ? '; path=' + (options.path) : '';
+            var domain = options.domain ? '; domain=' + (options.domain) : '';
+            var secure = options.secure ? '; secure' : '';
+            document.cookie = [name, '=', encodeURIComponent(value), expires, path, domain, secure].join('');
+        } else { // only name given, get cookie
+            var cookieValue = null;
+            if (document.cookie && document.cookie != '') {
+                var cookies = document.cookie.split(';');
+                for (var i = 0; i < cookies.length; i++) {
+                    var cookie = $.trim(cookies[i]);
+                    // Does this cookie string begin with the name we want?
+                    if (cookie.substring(0, name.length + 1) == (name + '=')) {
+                        cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                        break;
+                    }
+                }
+            }
+            return cookieValue;
+        }
+    };
+    $.addToCookie = function(cookieName, pageId) {
+        var socialLinks = $.cookie(cookieName);
+        socLinkValues = (socialLinks) ? socialLinks.split("\t") : [];
+        if (socLinkValues.indexOf(pageId) == -1) {
+            if (socLinkValues.push(pageId) > 10) {
+                socLinkValues.splice(0,1);
+            }
+            socialLinks = socLinkValues.join("\t");
+            $.cookie(cookieName, socialLinks, { expires: 5*365, path: '/', domain: 'consumeraffairs.com'});
+        }
+    };
+    $.facebookLikeButton = function(appId, locale, callback) {
+        window.fbAsyncInit = function() {
+            if (typeof FB == 'undefined') {
+            	return;
+            }
+            FB.init({appId: appId, status:true, cookie:true, xfbml:true});
+            FB.Event.subscribe('edge.create', function(href, widget) {
+                if (callback != null) {
+                    callback(href, widget);
+                }
+            });
+        };
+        $('body:not(:has(#fb-root))').append('<div id="fb-root"></div>');
+        $.getScript(document.location.protocol + '//connect.facebook.net/'+ locale + '/all.js#xfbml=1');
+        window.fbInitDone = true; 
+    };
+    $.facebookLikeButton('134324109971745', 'en_US', function(href, widgetObject) {
+        $.addToCookie('social_links', 'f:' + pageId);
+    });
+    // var pageId = "{{page.id}}";
+    $.each($('#content').attr('className').split(' '), function(i,classname){
+        if (classname.indexOf('id_') === 0){
+            var pageId = classname.substring(2);
+            return false;
+        }
+    });
+    var twitter_btn_link = $('#twitter-button');
+    var twitter_btn_link_href = twitter_btn_link[0].href;
+    // var href = decodeURIComponent("{{page.get_prod_url|urlencode}}");
+    var href = decodeURIComponent(twitter_btn_link_href.substring(
+        twitter_btn_link_href.indexOf('=') + 1,
+        twitter_btn_link_href.indexOf('&text='))
+        );
+    function encodeURITwitter(Y) {
+		return encodeURIComponent(Y).replace(/\+/g, "%2B");
+	}
+    function twitterPop(str) {
+    	var Z = 550,
+			h = 450;
+		var c = screen.height;
+		var b = screen.width;
+		var a = Math.round((b / 2) - (Z / 2));
+		var g = 0;
+        var d = window.open(str,
+            "twitter_tweet",
+            "left="+a+",top="+g+",width="+Z+",height="+h+
+            ",personalbar=0,toolbar=0,scrollbars=1,resizable=1");
+        if (d) {
+			d.focus();
+		} else {
+			window.location.href = str;
+		}
+    }
+    $.getJSON(
+        'ht'+'tp://urls.api.twitter.com/1/urls/count.json?url=' + encodeURITwitter(href) + '&callback=?', 
+        function(data) {
+            twitter_btn_link.after('<div class="hcount show-count">' +
+                '<span class="tb-container" id="tweet-button">' + 
+                '<span class="tb">' + 
+                '<button tabindex="1" id="btn" type="button" aria-describedby="btn-desc">Tweet</button>'+
+                '</span>' +
+                '<span class="t-count enabled">' + 
+                '<button tabindex="2" id="count" type="button" aria-describedby="count-desc">' + 
+                data.count + 
+                '</button></span></span>' +
+                '</div>' +
+                '<p id="btn-desc" class="offscreen">Share ' + href + ' on Twitter</p>' +
+                '<p id="count-desc" class="offscreen">The URL '+ 
+                href +' has been shared ' + data.count + ' times.View these Tweets.</p>');
+            twitter_btn_link.remove();
+            $("#tweet-button").click(function(event) {
+                $.addToCookie('social_links', "t:" + pageId);
+                twitterPop(twitter_btn_link_href);
+                return false;
+            });
+        }
+    );
+});

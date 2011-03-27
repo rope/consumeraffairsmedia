@@ -114,3 +114,133 @@ img.reputation_seal{margin: 0 30px 30px 0;}
 
 .ab_white_bg #content{background:#fff;}
 .ab_italic_ads .google_custom_text_ads{font-style: italic;}
+
+/* Social Buttons Specific */
+#twitter-button {
+      // visibility: hidden;
+      width: 110px;
+      height: 20px;
+      display: block;
+      background: url("http://platform0.twitter.com/widgets/images/tweet.png") no-repeat scroll 0 0 transparent;            
+}
+section button {
+    background: none repeat scroll 0 0 transparent;
+    border: medium none;
+    // margin: 0;
+    outline: medium none;
+    // overflow: visible;
+    padding: 0;
+}
+.offscreen {
+    left: -999em;
+    position: absolute;
+}
+.t-count {
+    visibility: hidden;
+}
+.show-count .t-count {
+    visibility: visible;
+}
+.tb-container {
+    display: block;
+}
+.tb {
+    display: block;
+    height: 20px;
+}
+.tb, .t-count, .t-count button {
+    background: url("http://platform0.twitter.com/widgets/images/tweet.png") no-repeat scroll 0 0 transparent;
+}
+.tb button {
+    left: -999em;
+    position: absolute;
+}
+.tb:hover, .tb-focus {
+    background-position: 0 -21px;
+}
+.tb:active {
+    background-position: 0 -42px;
+}
+.ncount .t-count {
+    display: none;
+}
+.vcount .t-count, .hcount .t-count {
+    display: block;
+}
+.hcount .tb {
+    float: left;
+    width: 55px;
+}
+.hcount .t-count {
+    background-position: 0 -145px;
+    float: left;
+    height: 20px;
+    margin: 0 0 0 3px;
+    padding: 0 0 0 8px;
+}
+.hcount .t-count button {
+    background-position: right -145px;
+    color: #2A7090;
+    display: block;
+    font: bold 12px Arial,Helvetica,sans-serif;
+    height: 20px;
+    margin: 0 -1px 0 0;
+    min-width: 26px;
+    padding: 0 4px 0 0;
+}
+.hcount .t-count.enabled:hover, .hcount .t-count-focus.enabled {
+    background-position: 0 -166px;
+}
+.hcount .t-count.enabled:hover button, .hcount .t-count-focus.enabled button {
+    background-position: right -166px;
+    color: #30566D;
+    text-shadow: 0 1px 0 #FFFFFF;
+}
+vcount .tb-container {
+    height: 50px;
+    position: relative;
+    width: 55px;
+}
+.vcount .tb {
+    margin-top: 42px;
+    position: absolute;
+    width: 100%;
+}
+.vcount .t-count {
+    background-position: 0 -63px;
+    height: 40px;
+    position: absolute;
+    text-align: center;
+    width: 100%;
+}
+.vcount .t-count button {
+    background-image: none;
+    color: #2A7090;
+    font: bold 16px Arial,Helvetica,sans-serif;
+    height: 34px;
+}
+.vcount .t-count.enabled:hover, .vcount .t-count-focus.enabled {
+    background-position: 0 -104px;
+}
+.vcount .t-count.enabled:hover button, .vcount .t-count-focus.enabled button {
+    color: #30566D;
+    text-shadow: 0 1px 0 #FFFFFF;
+}
+#social-buttons {
+    float: right;
+    display: inline;
+    position: relative;
+}
+
+.social-button{
+    padding: 0 5px;
+    float: left;
+    cursor: pointer;
+    height: 25px;
+}
+#social-buttons .facebook{
+    width: 82px;
+}
+#social-buttons .twitter{
+    width: 110px;
+}
