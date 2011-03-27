@@ -1,0 +1,116 @@
+body{font-family: Arial,'Liberation Sans',FreeSans,sans-serif; color:#000; font-size: 14px;}
+a{color:navy;}
+h1{font-size:1.8em; padding: 5px 0 3px;}
+h2{font-size:1.5em; padding: 5px 0 3px;}
+h3{font-size:1.3em; padding: 5px 0 3px;}
+h4{font-size:1em; padding: 5px 0 3px;}
+ol{list-style-type:number;}
+ol ol{list-style-type:lower-alpha;}
+
+header{margin:10px 0;}
+header .google_cse{margin-top: 10px; text-align:right;}
+header .google_custom_search{vertical-align: top; height: 20px; width: 190px;}
+header .header_ads {margin-left: 10px;}
+
+.select_nav{margin-top:10px; vertical-align:bottom;}
+.select_nav select{font-size: 1.2em; background: #fff; border: 1px solid #000; /*width:200px*/;font-family:Arial,'Liberation Sans',FreeSans,sans-serif;}
+.select_nav option{}
+.select_nav .nav_label{}
+header .nav_news{width:300px;}
+header .select_nav .nav_news{width:300px;}
+header .submit_link{float: right;}
+
+.title_bar {background: #ccc url('../img/header-gradient.gif') repeat-x; clear:both; padding: 5px 10px 15px;}
+.title_bar_grid {padding: 5px 0 1px;}
+.title_bar h1 {font-size: 2em; margin:3px 0; padding-top:0;}
+.title_subtitle_same_line h1 {float: left; display: block;}
+.title_subtitle_same_line h3 {float: left; padding-left: 15px; padding-top: 7px; margin: 0; display: block;}
+.title_bar h3 {font-size: 1.5em; margin:3px 0;}
+.title_bar_ads {margin-bottom: -15px;}
+
+.by_line{clear:both; margin:3px 0;}
+.addthis_widget{position:relative; display:inline;}
+.addthis_widget_company_page{position:relative; display:inline;}
+.addthis_toolbox{position:absolute; width:320px;}
+.addthis_default_style .at300b{padding:0 5px;}
+.socialbuttons_title{float:right;}
+.socialbuttons_title .addthis_toolbox{position:relative;}
+
+#content{background: #ccc url('../img/content-gradient.gif') repeat-x;}
+#sidebar{padding-top: 20px;}
+.news_image{padding-bottom:25px;}
+
+.adsByGoogle{text-decoration: none; color: black;}
+a.adsByGoogle:hover{text-decoration: none;}
+article .google_custom_text_ads{margin-top:15px; clear: left;}
+ul .google_custom_text_ads, ul .google_custom_text_ads{margin-left:-1.8em}
+.customGoogleAds{margin-top: 10px; margin-bottom: 25px;}
+.customGoogleAd{margin-bottom: 7px;}
+.sidebar_link_unit{margin: 20px 0;}
+
+.related_list{margin-bottom:25px;}
+.related_list li{margin:6px 0; font-weight:bold;}
+
+article{padding-top: 20px;}
+article td, article th{border: 1px solid #000; padding:3px;}
+article table{margin: 10px;}
+article img{margin: 0 15px 15px;}
+
+.redbig{font-size:1.3em; font-weight:bold; padding: 5px 0 3px;}
+
+.no_border, .no_border td, .no_border th{border:0;}
+
+blockquote {
+        font-family: Georgia,"Times New Roman", Times, serif; 
+        margin:5px; 
+        padding:10px;
+        font-size:1.0em; 
+        color:#000; 
+        font-style:italic; 
+        line-height:1.3em; 
+        width:100%; 
+        quotes:none;
+}
+
+.complaint_author{font-size: 12px; font-style: italic; text-align: right;}
+.complaint_author img{margin: 2px 0 0;}
+
+footer{margin-top:25px;}
+.nav1 {font-size: 10px; color: black; text-decoration: none;}
+a.nav1:hover {text-decoration: none;}
+.related_inc {text-align: left !important;}
+.footer_statements{font-size: 10px; margin-top: 20px;}
+p {margin:0 0 .75em;}
+
+
+img.reputation_verified{margin: 0 30px 30px 0;}
+img.reputation_seal{margin: 0 30px 30px 0;}
+
+/* Front Page Specific */
+.front_page .title_bar{margin-top:15px;}
+.front_page #logo{margin: 10px 10px 20px;}
+.front_page .google_cse{text-align:left;}
+.front_page .google_cse input{font-size:1.5em; height:auto;}
+.front_page .submit_link{font-size:1.5em; margin-top:10px;}
+.front_page .select_nav{font-size:1.5em;}
+.featured_story{padding: 5px 0;}
+.featured_story h1{}
+.featured_story img{float:left; margin:0 15px 0 0}
+.featured_story article{font-size: 1.2em; margin: 0}
+.featured_story aside{padding-top:20px;}
+.old_featured{margin-top: 20px;}
+.old_featured img{margin:0 10px; float:right;}
+.link_list{overflow:hidden; margin:20px 0;}
+.link_list h3{}
+.link_list ul{list-style:none; margin-left:0;}
+
+.complaint_form{border-spacing:2px; border-collapse: separate;}
+.complaint_form tbody{background:#eee;}
+.complaint_form td{border:0;}
+
+
+.ie7 .ui-widget-overlay, .ie8 .ui-widget-overlay{max-height:32768px;}
+
+
+.ab_white_bg #content{background:#fff;}
+.ab_italic_ads .google_custom_text_ads{font-style: italic;}
